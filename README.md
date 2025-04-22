@@ -30,3 +30,7 @@ Running:
 - When the console outputs the Gradio UI ip address, the models have loaded.
 - There is no output directory (yet) for the UI. You'll need to manually save generated images (change the .webp ext to .PNG if you do).
 - Images created via Auto1111 are sent back automatically and don't require the UI at all.
+
+Thanks:
+- Thank you to the team behind SUPIR
+- Thank you to the user behind this reddit post for their instructions on running SUPIR on Low VRAM systems: https://www.reddit.com/r/StableDiffusion/comments/1b37h5z/supir_super_resolution_tutorial_to_run_it_locally/
