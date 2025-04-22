@@ -7,7 +7,7 @@ Intended specifically for systems with lower VRAM (12GB), this fork caches model
 The upscaler also functions independent of Auto1111, accessible through a web browser, much like the original SUPIR demo. (Default address: 127.0.0.1:6688). 
 All credit for SUPIR goes to https://github.com/Fanghua-Yu/SUPIR and the team mentioned there.
 
-The Automatic1111 extension can be found here: 
+The Automatic1111 extension can be found here: TODO: Update with repo when extension uploaded
 
 Requirements & Installation:
 - ~64GB of Memory (RAM + Pagefile) - I've only tested this on a machine using 32GB RAM + 32GB allocated to the pagefile. Most of this is only needed to build the model during startup, but you may need to increase your pagefile if your RAM < 64GB.
