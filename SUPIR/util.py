@@ -50,11 +50,57 @@ def create_SUPIR_model(config_path, SUPIR_sign=None, load_default_setting=False)
         return model, default_setting
     return model
 
+
 def load_QF_ckpt(config_path):
     config = OmegaConf.load(config_path)
     ckpt_F = torch.load(config.SUPIR_CKPT_F, map_location='cpu')
     ckpt_Q = torch.load(config.SUPIR_CKPT_Q, map_location='cpu')
     return ckpt_Q, ckpt_F
+
+
+def load_Q_or_F_ckpt(config_path, SUPIR_sign: str = 'Q'):
+    config = OmegaConf.load(config_path)
+    if SUPIR_sign == 'Q':
+        ckpt = torch.load(config.SUPIR_CKPT_Q, map_location='cpu')
+    elif SUPIR_sign == 'F':
+        ckpt = torch.load(config.SUPIR_CKPT_F, map_location='cpu')
+    else:
+        print(f'WARNING: Invalid ckpt sign ({SUPIR_sign}). Loading CKPT_Q as default.')
+        ckpt = torch.load(config.SUPIR_CKPT_Q, map_location='cpu')
+    return ckpt
+
+
+def check_QF_dir(config_path, SUPIR_sign: str = 'Q') -> bool:
+    from pathlib import Path
+    config = OmegaConf.load(config_path)
+    print("")
+    if SUPIR_sign == 'F':
+        print(f"Checking for {config.SUPIR_CKPT_F} \n")
+        if Path(config.SUPIR_CKPT_F).is_file():
+            return True
+    elif SUPIR_sign == 'Q':
+        print(f"Checking for {config.SUPIR_CKPT_Q} \n")
+        if Path(config.SUPIR_CKPT_Q).is_file():
+            return True
+    else:
+        print(f"SUPIR sign '{SUPIR_sign}' is not a valid checkpoint. Defaulting to 'Q' instead.")
+        print(f"Checking for {config.SUPIR_CKPT_Q} \n")
+        if Path(config.SUPIR_CKPT_Q).is_file():
+            return True
+    return False
+
+"""
+def load_Q_ckpt(config_path):
+    config = OmegaConf.load(config_path)
+    ckpt_Q = torch.load(config.SUPIR_CKPT_Q, map_location='cpu')
+    return ckpt_Q
+
+
+def load_F_ckpt(config_path):
+    config = OmegaConf.load(config_path)
+    ckpt_F = torch.load(config.SUPIR_CKPT_F, map_location='cpu')
+    return ckpt_F
+"""
 
 
 def PIL2Tensor(img, upsacle=1, min_size=1024, fix_resize=None):
