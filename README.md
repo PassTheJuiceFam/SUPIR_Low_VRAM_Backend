@@ -10,7 +10,7 @@ All credit for SUPIR goes to https://github.com/Fanghua-Yu/SUPIR and the team me
 The Automatic1111 extension can be found here: 
 
 Requirements & Installation:
-- ~64GB of RAM - Thankfully, this includes your pagefile. I've only tested this on a machine using 32GB VRAM + 32GB allocated to the pagefile. Most of this is only needed to build the model during startup, but you may need to increase your pagefile.
+- ~64GB of Memory (RAM + Pagefile) - I've only tested this on a machine using 32GB RAM + 32GB allocated to the pagefile. Most of this is only needed to build the model during startup, but you may need to increase your pagefile if your RAM < 64GB.
   - TODO: Include instructions on increasing pagefile here. (Note: You'll have to Google how to do this for now)
 - CUDA - Required for SUPIR. The installation batch file includes torch for CUDA 12.6, if you need to use another CUDA version, you'll need to update this or install requirements seperately. Note that multiple versions of CUDA can be installed simultaneously.
 - clip-vit-large-patch14 - Clone this entire repo and place it in the base directory of this repo (the same folder as supir-server.py). The path should look like: "...\SUPIR_Low_VRAM_Backend\clip-vit-large-patch14\..."
